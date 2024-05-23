@@ -1,10 +1,6 @@
-from typing import Annotated
-
-from fast_depends import Depends
 from fastapi import APIRouter
-from faststream.kafka.fastapi import KafkaRouter, KafkaBroker
 
-from app.broker import broker, router as kafka_router
+from app.broker import router as kafka_router
 
 api_router = APIRouter(prefix="/api", tags=["api"])
 
