@@ -17,7 +17,9 @@ async def consume():
 
         return msg.value()
     except SerializerError as e:
-        raise HTTPException(status_code=500, detail=f"Message deserialization failed: {e}")
+        raise HTTPException(
+            status_code=500, detail=f"Message deserialization failed: {e}"
+        )
 
 
 @api_router.get("/hello/{name}")

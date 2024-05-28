@@ -4,7 +4,7 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from pyctuator.pyctuator import Pyctuator
 
 from app.routers.api import api_router
-from app.settings import SENTRY_DSN, SENTRY_ENVIRONMENT, APP_NAME, APP_VERSION
+from app.settings import APP_NAME, APP_VERSION, SENTRY_DSN, SENTRY_ENVIRONMENT
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
