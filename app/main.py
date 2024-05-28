@@ -5,7 +5,6 @@ from pyctuator.pyctuator import Pyctuator
 
 from app.routers.api import api_router
 from app.settings import SENTRY_DSN, SENTRY_ENVIRONMENT, APP_NAME, APP_VERSION
-from app.broker import router as kafka_router
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
@@ -16,7 +15,7 @@ sentry_sdk.init(
     environment=SENTRY_ENVIRONMENT,
 ) if SENTRY_DSN else None
 
-app = FastAPI(title=APP_NAME, version=APP_VERSION, lifespan=kafka_router.lifespan_context)
+app = FastAPI(title=APP_NAME, version=APP_VERSION)
 
 app.include_router(router=api_router, prefix="")
 
