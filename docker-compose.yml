@@ -38,6 +38,14 @@ services:
       timeout: 10s
       retries: 6
 
+  create-topic:
+    image: bitnami/kafka:3.5.0
+    container_name: create-topic
+    depends_on:
+      kafka:
+        condition: service_healthy
+    entrypoint: [ '/bin/bash', '-c', 'kafka-topics.sh --create --bootstrap-server kafka:9092 --replication-factor 1 --partitions 1 --topic greetings; sleep 5' ]
+
   consumer:
     build:
       context: .
